@@ -1,0 +1,41 @@
+# config_for_DeepQMC.yaml
+
+batch_size: 4096
+mode: inference
+
+log:
+  restore_path: '/data/home/yinchang/DeepQMC/checkpoints/small_mol/O3'
+  save_path: '/home/yinchang/DeepQMC/checkpoints/H2'
+  max_to_keep: 10
+
+network:
+  network_type: psiformer
+  psiformer:
+    use_gate: true
+    use_edge_bias: false
+    num_heads: 4
+    heads_dim: 64
+  jastrow: simple
+  rescale_inputs: true
+  bias_orbitals: false
+
+mcmc:
+  steps: 10
+
+optim:
+  optimizer: kfac
+  iterations: 10000
+
+pretrain:
+  iterations: 20000
+
+# Molecule information
+molecule:
+  coords:
+    - [0.0, 2.0859, -0.4319]
+    - [0.0, 0.0, 0.8638]
+    - [0.0, -2.0859, -0.4319]
+  atoms: [O, O, O]
+  charge: 0
+  spin: 0
+  unit: bohr

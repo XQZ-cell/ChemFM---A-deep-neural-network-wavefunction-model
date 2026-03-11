@@ -1,0 +1,49 @@
+# config_for_DeepQMC.yaml
+
+batch_size: 256
+mode: training
+
+log:
+  restore_path: ''
+  save_path: '/home/yinchang/DeepQMC/checkpoints/HMC_test'
+  max_to_keep: 10
+
+network:
+  network_type: psiformer
+  psiformer:
+    use_gate: false
+    use_edge_bias: false
+    num_heads: 4
+    heads_dim: 64
+  jastrow: simple
+  rescale_inputs: true
+  bias_orbitals: false
+
+mcmc:
+  steps: 30
+  proposal: random_walk
+  move_width: 0.1
+  sampler_params:
+    M: none
+    M_inver: none
+    L: 20
+    max_norm: 5.0
+
+optim:
+  optimizer: kfac
+  iterations: 500
+
+pretrain:
+  iterations: 10
+
+# Molecule information
+molecule:
+  coords:
+    - [0.0, 0.0, 0.0]
+    - [0.0, 0.0, 1.0]
+    - [0.0, 0.0, 2.0]
+    - [0.0, 0.0, 3.0]
+  atoms: [H, H, H, H]
+  charge: 0
+  spin: 0
+  unit: angstrom

@@ -1,0 +1,45 @@
+# config_for_DeepQMC.yaml
+
+batch_size: 2048
+mode: inference
+
+log:
+  restore_path: '/data/home/yinchang/DeepQMC/checkpoints/small_mol/C4H6(2)'
+  save_path: '/data/home/yinchang/DeepQMC/checkpoints/C4H6_no_gate'
+  max_to_keep: 10
+
+network:
+  network_type: psiformer
+  psiformer:
+    use_gate: true
+    use_edge_bias: false
+    num_heads: 4
+    heads_dim: 64
+  jastrow: simple
+  rescale_inputs: true
+  bias_orbitals: false
+
+optim:
+  optimizer: kfac
+  iterations: 10000
+
+pretrain:
+  iterations: 20000
+
+# Molecule information
+molecule:
+  coords:
+    - [0.0, 2.13792, 0.58661]
+    - [0.0, -2.13792, 0.58661]
+    - [1.41342, 0.0, -0.58924]
+    - [-1.41342, 0.0, -0.58924]
+    - [0.0, 2.33765, 2.64110]
+    - [0.0, 3.92566, -0.43023]
+    - [0.0, -2.33765, 2.64110]
+    - [0.0, -3.92566, -0.43023]
+    - [2.67285, 0.0, -2.19514]
+    - [-2.67285, 0.0, -2.19514]
+  atoms: [C, C, C, C, H, H, H, H, H, H]
+  charge: 0
+  spin: 0
+  unit: bohr

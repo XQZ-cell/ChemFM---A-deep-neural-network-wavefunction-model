@@ -1,0 +1,40 @@
+# config_for_DeepQMC.yaml
+
+batch_size: 4096
+mode: training
+
+log:
+  restore_path: ''
+  save_path: '/data/home/yinchang/DeepQMC/checkpoints/rescale_test/no_rescale'
+  max_to_keep: 10
+
+network:
+  network_type: psiformer
+  psiformer:
+    use_gate: false
+    use_edge_bias: false
+    num_heads: 4
+    heads_dim: 64
+  jastrow: simple
+  rescale_inputs: false
+  bias_orbitals: false
+
+mcmc:
+  steps: 30
+
+optim:
+  optimizer: kfac
+  iterations: 100000
+
+pretrain:
+  iterations: 20000
+
+# Molecule information
+molecule:
+  coords:
+    - [0.0, 0.0, 0.0]
+    - [0.0, 0.0, 2.068]
+  atoms: [N, N]
+  charge: 0
+  spin: 0
+  unit: bohr

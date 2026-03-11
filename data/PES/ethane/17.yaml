@@ -1,0 +1,43 @@
+# config_for_DeepQMC.yaml
+
+batch_size: 4096
+mode: training
+
+log:
+  restore_path: ''
+  save_path: '/data/home/yinchang/DeepQMC/checkpoints/PES/ethane/17'
+  max_to_keep: 10
+
+network:
+  network_type: psiformer
+  psiformer:
+    use_gate: false
+    use_edge_bias: false
+    num_heads: 4
+    heads_dim: 64
+  jastrow: simple
+  rescale_inputs: true
+  bias_orbitals: true
+
+optim:
+  optimizer: kfac
+  iterations: 200000
+
+pretrain:
+  iterations: 20000
+
+# Molecule information
+molecule:
+  coords:
+    - [-1.12225259, 0.18859106, 0.14705332]
+    - [-0.01674774, -0.75935028, 0.11454861]
+    - [-1.7628408, 0.27169404, 1.0240134]
+    - [-0.39477304, -1.75920852, -0.1821827]
+    - [-1.4546383, 0.70407017, -0.75056401]
+    - [0.45892966, -0.90067146, 1.09204645]
+    - [3.54171069, 2.74918025, -0.82814357]
+    - [0.75061214, -0.49430528, -0.61677147]
+  atoms: [C, C, H, H, H, H, H, H]
+  charge: 0
+  spin: 0
+  unit: angstrom

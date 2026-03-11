@@ -1,0 +1,42 @@
+# config_for_DeepQMC.yaml
+
+batch_size: 4096
+mode: training
+
+log:
+  restore_path: ''
+  save_path: '/data/home/yinchang/DeepQMC/checkpoints/small_mol'
+  max_to_keep: 10
+
+network:
+  network_type: psiformer
+  psiformer:
+    use_gate: false
+    use_edge_bias: false
+    num_heads: 4
+    heads_dim: 64
+  jastrow: simple
+  rescale_inputs: true
+  bias_orbitals: true
+
+optim:
+  optimizer: kfac
+  iterations: 200000
+
+pretrain:
+  iterations: 0
+
+# Molecule information
+molecule:
+  coords:
+    - [0.0517, 0.7044, 0.0]
+    - [0.0517, -0.7596, 0.0]
+    - [-0.9417, 1.1762, 0.0]
+    - [-0.4582, -1.0994, 0.8124]
+    - [-0.4582, -1.0994, -0.8124]
+    - [0.5928, 1.0567, 0.8807]
+    - [0.5928, 1.0567, -0.8807]
+  atoms: [C, N, H, H, H, H, H]
+  charge: 0
+  spin: 0
+  unit: bohr
